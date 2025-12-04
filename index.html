@@ -1,366 +1,260 @@
-   <!doctype html>
+ <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Suru Digital Care</title>
-
-  <!-- Google font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <title>SURU DIGITAL CARE — Digital Support & Assistance</title>
 
   <style>
     :root{
-      --green:#0f4f3d;       /* main dark green */
-      --green-2:#0b3f34;    /* darker */
-      --accent:#f5d271;     /* yellow card */
-      --card:#ffd97a;       /* card pale */
-      --muted:#dfe8e1;
-      --pay-blue:#009cde;
-      --mail-red:#b02b2b;
-      --wh-green:#25D366;
-      --shadow: 0 18px 30px rgba(5,30,20,0.28);
-      --round:14px;
+      --green-900:#0f4b34;
+      --green-800:#104d36;
+      --accent-yellow:#f6d26b;
+      --card-yellow:#f7df8e;
+      --btn-paypal:#009cde;
+      --btn-email:#9b2a2a;
+      --btn-whatsapp:#25D366;
+      --text-light: #f2f7f3;
+      --muted:#bcd0c4;
+      --shadow: 0 18px 30px rgba(6,15,12,0.25);
+      --nav-item-bg: rgba(0,0,0,0.06);
     }
 
-    html,body{
-      height:100%;
-      margin:0;
-      font-family:"Inter",system-ui,Arial,sans-serif;
-      background: linear-gradient(180deg, var(--green) 0%, #0b3f34 100%);
-      color:#e6f1ea;
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+    body{
+      background: linear-gradient(180deg, var(--green-800) 0%, var(--green-900) 100%);
+      color:var(--text-light);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
     /* header */
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:22px 56px;
-      max-width:1200px;
-      margin:0 auto;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-    .brand img{
-      width:60px;
-      height:60px;
-      object-fit:contain;
-    }
-    .brand .brand-text{
-      font-weight:800;
-      color:#f3ca5a;
-      font-size:20px;
-      line-height:1;
-      letter-spacing:1px;
-    }
-    nav.nav{
-      display:flex;
-      gap:22px;
-      align-items:center;
-    }
-    nav.nav a{
-      color: #e7f6ee;
-      text-decoration:none;
-      font-weight:500;
-      padding:10px 12px;
-      border-radius:8px;
-    }
+    header{display:flex;align-items:center;justify-content:space-between;padding:20px 40px;box-sizing:border-box;max-width:1200px;margin:0 auto}
+    .brand{display:flex;align-items:center;gap:16px}
+    .brand img{width:64px;height:64px;object-fit:contain}
+    .brand .title{font-weight:900;color:var(--accent-yellow);font-size:22px;letter-spacing:2px}
+    nav{display:flex;gap:26px;align-items:center}
+    nav a{color:var(--text-light);text-decoration:none;padding:8px 10px;border-radius:8px;font-size:16px}
+    nav a:hover{background:var(--nav-item-bg)}
+
     /* services dropdown */
-    .services-wrap{
-      position:relative;
+    .serviceswrap{position:relative}
+    .services-btn{background:var(--nav-item-bg);padding:8px 12px;border-radius:8px;color:var(--text-light);cursor:pointer}
+    .services-menu{
+      position:absolute;right:0;top:calc(100% + 10px);min-width:240px;background:#fff;color:#073827;border-radius:10px;padding:14px;
+      box-shadow:0 14px 32px rgba(0,0,0,0.22);display:none;z-index:40;font-size:14px;
     }
-    .services-toggle{
-      background:rgba(10,30,20,0.18);
-      padding:8px 12px;
-      border-radius:8px;
-      cursor:pointer;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      color:#dff0e6;
-    }
-    .dropdown{
-      position:absolute;
-      right:0;
-      top:46px;
-      min-width:220px;
-      background:linear-gradient(180deg,#ffffff, #f1f7f3);
-      color:#0b3f34;
-      border-radius:12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-      padding:12px;
-      display:none;
-      z-index:50;
-    }
-    .dropdown h4{ margin:4px 0 9px; font-size:14px; color:#0b3f34; }
-    .dropdown a{
-      display:block;
-      padding:8px 8px;
-      border-radius:8px;
-      color:#0b3f34;
-      text-decoration:none;
-      opacity:0.95;
-      margin-bottom:6px;
-      font-weight:600;
-    }
-    .dropdown a:hover{ background:rgba(0,0,0,0.04); }
+    .services-menu h4{margin:0 0 8px 0;color:#0f4b34;font-weight:700}
+    .services-menu a{display:block;color:#2f6a5b;text-decoration:none;padding:8px 6px;border-radius:6px}
+    .services-menu a:hover{background:rgba(15,75,52,0.06);color:#0b3f2f}
 
     /* main layout */
-    .container{
-      max-width:1200px;
-      margin: 22px auto 60px;
-      display:flex;
-      gap:30px;
-      align-items:flex-start;
-      padding:22px;
-    }
+    .container{max-width:1200px;margin:0 auto;padding:18px 20px;box-sizing:border-box}
+    .hero{display:flex;gap:40px;align-items:center;justify-content:space-between;padding:36px 0}
+    .left{flex:1 1 50%}
+    .right{flex:0 0 400px}
+    h2{font-size:72px;margin:0;line-height:0.94;font-weight:900;color:var(--text-light)}
+    p.lead{color:var(--muted);max-width:640px;margin-top:18px;font-size:16px;line-height:1.6}
 
-    .left{
-      width:60%;
-      padding:40px 20px;
-    }
-    .left h1{
-      font-size:96px;
-      line-height:0.92;
-      margin:0 0 20px;
-      color: #ecf7ef;
-      font-weight:900;
-      text-shadow: 0 6px 0 rgba(0,0,0,0.06);
-    }
-    .left p{
-      color: #d6eadf;
-      max-width:640px;
-      font-size:16px;
-      line-height:1.6;
-    }
-
-    /* action buttons */
-    .actions{
-      margin:26px 0 0;
-      display:flex;
-      gap:16px;
-      align-items:center;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 18px;
-      border-radius:10px;
-      font-weight:700;
-      color:#fff;
-      box-shadow: 0 18px 30px rgba(0,0,0,0.25);
-      text-decoration:none;
-    }
-    .btn svg{ width:18px; height:18px; filter:drop-shadow(0 2px 0 rgba(0,0,0,0.15)); }
-
-    .btn-pay{background:var(--pay-blue);}
-    .btn-mail{background:var(--mail-red);}
-    .btn-wh{background:var(--wh-green); color:#002b1f; }
+    /* button row */
+    .btn-row{display:flex;gap:14px;margin-top:26px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;box-shadow:var(--shadow);border:none;cursor:pointer;font-weight:700}
+    .btn svg{height:18px;width:18px}
+    .btn.paypal{background:var(--btn-paypal);color:#fff}
+    .btn.email{background:var(--btn-email);color:#fff}
+    .btn.whatsapp{background:var(--btn-whatsapp);color:#042a19}
 
     /* card/form */
-    .right{
-      flex:1;
-      display:flex;
-      justify-content:flex-end;
-      padding:20px;
+    .card{background:linear-gradient(180deg,var(--card-yellow), var(--accent-yellow));padding:22px;border-radius:14px;box-shadow:var(--shadow);color:#062b1f}
+    .card h3{text-align:center;margin:0 0 10px;font-size:18px;letter-spacing:1px}
+    .form-field{margin:10px 0}
+    input[type="text"], input[type="email"], textarea, select{
+      width:100%;padding:12px;border-radius:8px;border:none;box-shadow:inset 0 2px 0 rgba(0,0,0,0.04);
+      font-size:14px;box-sizing:border-box
     }
-    .card{
-      width:360px;
-      background:var(--card);
-      border-radius:16px;
-      padding:22px;
-      box-shadow: var(--shadow);
-      border:6px solid rgba(0,0,0,0.06);
-    }
-    .card h3{ margin:0 0 10px; color:var(--green-2); font-weight:800; text-align:center; }
-    .field{ display:block; margin-bottom:12px; }
-    .field input,.field textarea,.field select{
-      width:100%;
-      padding:12px 14px;
-      border-radius:8px;
-      border:1px solid rgba(0,0,0,0.06);
-      font-size:14px;
-      box-sizing:border-box;
-      outline:none;
-    }
-    .field textarea{ min-height:100px; resize:vertical; }
-    .submit{
-      display:block;
-      margin-top:10px;
-      background:var(--green-2);
-      color:#f6e9c2;
-      font-weight:800;
-      border:none;
-      padding:12px 18px;
-      border-radius:10px;
-      cursor:pointer;
-      width:100%;
-    }
-    .status{
-      display:block;
-      margin-top:8px;
-      color:#102a23;
-      font-weight:700;
-    }
+    textarea{min-height:110px;resize:vertical}
+    .submit{display:block;width:100%;background:#0f4b34;color:var(--card-yellow);border-radius:10px;padding:12px;font-weight:800;margin-top:10px;cursor:pointer}
 
-    /* footer */
-    footer{ text-align:center; padding:34px 12px; color:#d8e7dd; opacity:0.9; }
+    footer{text-align:center;padding:36px 0;color:rgba(255,255,255,0.65);font-size:14px;margin-top:20px}
 
-    /* responsive */
     @media(max-width:980px){
-      .container{ flex-direction:column; align-items:center; padding:10px; }
-      .left{ width:100%; padding:10px; text-align:center; }
-      .left h1{ font-size:52px; }
-      .right{ width:100%; justify-content:center; }
-      header{ padding:14px 18px; }
+      .hero{flex-direction:column;align-items:flex-start}
+      .right{order:2;width:100%}
+      .left{width:100%}
+      h2{font-size:44px}
+      header{padding:14px}
     }
   </style>
 </head>
 <body>
 
   <header>
+    <!-- pyramid logo + stacked text -->
     <div class="brand">
-      <!-- pyramid logo file must be at: assets/pyramid.png -->
-      <img src="assets/pyramid.png" alt="pyramid logo" id="brand-logo">
-      <div class="brand-text">SURU<br><span style="font-weight:700">DIGITAL</span> CARE</div>
+      <!-- Replace with your pyramid image in assets folder -->
+      <img src="assets/pyramid.png" alt="pyramid logo">
+      <div class="title">SURU<br> DIGITAL<br> CARE</div>
     </div>
 
-    <nav class="nav" role="navigation" aria-label="top navigation">
+    <nav>
       <a href="index.html">Home</a>
       <a href="contact.html">Contact Us</a>
 
-      <div class="services-wrap">
-        <div class="services-toggle" id="servicesToggle">Services ▾</div>
-        <div class="dropdown" id="servicesDropdown" aria-hidden="true">
+      <div class="serviceswrap" id="servicesWrap">
+        <div class="services-btn" id="servicesBtn" aria-haspopup="true" aria-expanded="false">Services ▾</div>
+        <div class="services-menu" id="servicesMenu" role="menu" aria-label="Our services">
           <h4>Our services</h4>
-          <a href="#">Remote Technical Support</a>
-          <a href="#">Account Support &amp; Recovery Guidance</a>
-          <a href="#">Online Consulting</a>
-          <a href="#">Website Support &amp; Troubleshooting</a>
-          <a href="#">Device Setup Assistance</a>
-          <a href="#">Data &amp; File Assistance</a>
-          <a href="#">General Digital Help</a>
+          <a href="#" data-service="Remote Technical Support">Remote Technical Support</a>
+          <a href="#" data-service="Account Support & Recovery Guidance">Account Support & Recovery Guidance</a>
+          <a href="#" data-service="Online Consulting">Online Consulting</a>
+          <a href="#" data-service="Website Support & Troubleshooting">Website Support & Troubleshooting</a>
+          <a href="#" data-service="Device Setup Assistance">Device Setup Assistance</a>
+          <a href="#" data-service="Data & File Assistance">Data & File Assistance</a>
+          <a href="#" data-service="General Digital Help">General Digital Help</a>
         </div>
       </div>
     </nav>
   </header>
 
   <main class="container">
-    <section class="left">
-      <h1>DIGITAL SUPPORT &amp; ASSISTANCE SERVICES</h1>
-      <p>We provide remote digital assistance, online consulting &amp; guidance, technical help, account support, and troubleshooting services. All services are delivered online instantly. Please use the Get Estimate Now form to contact us.</p>
+    <section class="hero">
+      <div class="left">
+        <h2> DIGITAL SUPPORT &<br> ASSISTANCE <br> SERVICES</h2>
+        <p class="lead">We provide remote digital assistance, online consulting & guidance, technical help, account support, and troubleshooting services. All services are delivered online instantly. Please use the Get Estimate Now form to contact us.</p>
 
-      <div class="actions">
-        <a class="btn btn-pay" href="https://www.paypal.com/" target="_blank" rel="noopener">
-          <!-- PayPal icon -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6h10l-1.2 7.2c-.2 1.2-1.3 2-2.5 2H8.2L9 6z" fill="#fff"/></svg>
-          Pay with PayPal
-        </a>
+        <div class="btn-row">
+          <!-- PayPal styled button -->
+          <a class="btn paypal" href="https://www.paypal.me/SuruSilver" target="_blank" rel="noopener">
+            <!-- simple Paypal SVG -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M6 3h8l-1 6H9.2L8 18H6z" fill="#fff"/>
+              <path d="M10 3h6l-1 6h-3.8L10 3z" fill="#0070ba" opacity="0.2"/>
+            </svg>
+            Pay with PayPal
+          </a>
 
-        <a class="btn btn-mail" href="mailto:SuruDigitalCare@gmail.com" target="_blank" rel="noopener">
-          <!-- envelope -->
-          <svg viewBox="0 0 24 24" fill="none"><path d="M3 6.5l9 6 9-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Email Us
-        </a>
+          <!-- Email -->
+          <a class="btn email" href="mailto:SuruDigitalCare@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <path d="M3 6.5L12 12 21 6.5V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6.5z" fill="#fff"/>
+              <path d="M3 6.5L12 12 21 6.5" stroke="#fff" stroke-opacity=".6"/>
+            </svg>
+            Email Us
+          </a>
 
-        <a class="btn btn-wh" href="https://wa.me/00918866362533" target="_blank" rel="noopener">
-          <!-- whatsapp -->
-          <svg viewBox="0 0 24 24" fill="none"><path d="M21 13.5A8.5 8.5 0 1 1 12.5 5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          WhatsApp Us
-        </a>
+          <!-- WhatsApp -->
+          <a class="btn whatsapp" href="https://wa.me/00918866362533" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden xmlns="http://www.w3.org/2000/svg" fill="#fff">
+              <path d="M12 2a10 10 0 0 0-8.7 15.1L2 22l4.9-1.3A10 10 0 1 0 12 2z"/>
+            </svg>
+            WhatsApp Us
+          </a>
+        </div>
       </div>
+
+      <aside class="right">
+        <div class="card">
+          <h3>GET ESTIMATE NOW</h3>
+          <form id="estimateForm" name="estimateForm" autocomplete="off">
+            <div class="form-field">
+              <input id="name" name="name" type="text" placeholder="Name" required>
+            </div>
+            <div class="form-field">
+              <input id="email" name="email" type="email" placeholder="Email" required>
+            </div>
+            <div class="form-field">
+              <input id="phone" name="phone" type="text" placeholder="Phone (optional)">
+            </div>
+            <div class="form-field">
+              <select id="service" name="service" required>
+                <option value="">Service needed</option>
+                <option>Remote Technical Support</option>
+                <option>Account Support & Recovery Guidance</option>
+                <option>Online Consulting</option>
+                <option>Website Support & Troubleshooting</option>
+                <option>Device Setup Assistance</option>
+                <option>Data & File Assistance</option>
+                <option>General Digital Help</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <textarea id="message" name="message" placeholder="Explain your problem / service needed"></textarea>
+            </div>
+
+            <div id="formStatus" style="margin-top:6px;color:#073827;font-weight:600;"></div>
+            <button id="submitBtn" class="submit" type="submit">SUBMIT REQUEST</button>
+          </form>
+        </div>
+      </aside>
     </section>
-
-    <aside class="right">
-      <form class="card" id="estimateForm" autocomplete="off" aria-label="Get estimate form">
-        <h3>GET ESTIMATE NOW</h3>
-
-        <label class="field"><input name="name" id="name" placeholder="Name" required></label>
-        <label class="field"><input name="email" id="email" placeholder="Email" required></label>
-        <label class="field"><input name="phone" id="phone" placeholder="Phone (optional)"></label>
-
-        <label class="field">
-          <select name="service" id="service">
-            <option>Service needed</option>
-            <option>Remote Technical Support</option>
-            <option>Account Support &amp; Recovery Guidance</option>
-            <option>Online Consulting</option>
-            <option>Website Support &amp; Troubleshooting</option>
-            <option>Device Setup Assistance</option>
-            <option>Data &amp; File Assistance</option>
-            <option>General Digital Help</option>
-          </select>
-        </label>
-
-        <label class="field"><textarea name="message" id="message" placeholder="Explain your problem / service needed"></textarea></label>
-
-        <button class="submit" id="submitBtn" type="submit">SUBMIT REQUEST</button>
-        <div class="status" id="status"></div>
-      </form>
-    </aside>
   </main>
 
   <footer>© 2025 Suru Digital Care — All rights reserved.</footer>
 
   <script>
-    // Dropdown toggle
-    const toggle = document.getElementById('servicesToggle');
-    const dd = document.getElementById('servicesDropdown');
-    toggle.addEventListener('click', (e) => {
-      const open = dd.style.display === 'block';
-      dd.style.display = open ? 'none' : 'block';
-      dd.setAttribute('aria-hidden', open ? 'true' : 'false');
-    });
-    // close dropdown if click outside
-    document.addEventListener('click', (e) => {
-      if (!toggle.contains(e.target) && !dd.contains(e.target)) {
-        dd.style.display = 'none';
-        dd.setAttribute('aria-hidden','true');
-      }
-    });
+    // Services dropdown logic
+    (function(){
+      const btn = document.getElementById('servicesBtn');
+      const menu = document.getElementById('servicesMenu');
+      const wrap = document.getElementById('servicesWrap');
 
-    // Form submit - uses your existing API path /api/sendgrid_send
-    const form = document.getElementById('estimateForm');
-    const statusEl = document.getElementById('status');
-    const submitBtn = document.getElementById('submitBtn');
+      function openMenu(){ menu.style.display = 'block'; btn.setAttribute('aria-expanded','true'); }
+      function closeMenu(){ menu.style.display = 'none'; btn.setAttribute('aria-expanded','false'); }
 
-    async function safeParseJSON(resp){
-      try { return { json: await resp.json() }; }
-      catch(e){ return { text: await resp.text() }; }
-    }
+      btn.addEventListener('click', ()=> menu.style.display==='block' ? closeMenu() : openMenu());
+      document.addEventListener('click', (ev)=>{ if(!wrap.contains(ev.target)) closeMenu(); });
 
-    form.addEventListener('submit', async (ev) => {
-      ev.preventDefault();
-      submitBtn.disabled = true;
-      statusEl.textContent = 'Sending...';
-      const data = new FormData(form);
-      const urlEncoded = new URLSearchParams();
-      for(const [k,v] of data.entries()) urlEncoded.append(k,v);
-
-      try {
-        const r = await fetch('/api/sendgrid_send', {
-          method:'POST',
-          headers:{'Content-Type':'application/x-www-form-urlencoded'},
-          body: urlEncoded.toString()
+      menu.querySelectorAll('a[data-service]').forEach(a=>{
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          const service = this.getAttribute('data-service');
+          document.getElementById('service').value = service;
+          document.getElementById('estimateForm').scrollIntoView({behavior:'smooth',block:'center'});
+          closeMenu();
         });
-        const parsed = await safeParseJSON(r);
-        if (parsed.json && parsed.json.success) {
-          statusEl.textContent = 'Request sent — we will contact you soon.';
-          form.reset();
-        } else {
-          const err = parsed.json ? (parsed.json.error || parsed.json) : (parsed.text || 'Unknown error');
-          statusEl.textContent = 'Final error: ' + (err || 'unknown');
+      });
+    })();
+
+    // Form submit (POST to /api/sendgrid_send)
+    (function(){
+      function safeParseJSON(resp){ return resp.text().then(txt=>{ try { return { json: JSON.parse(txt), text: txt }; } catch(e){ return { json:null, text: txt }; } }); }
+
+      const form = document.getElementById('estimateForm');
+      const statusEl = document.getElementById('formStatus');
+      const submitBtn = document.getElementById('submitBtn');
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        statusEl.textContent = '';
+
+        const data = new FormData(form);
+        const urlEncoded = new URLSearchParams();
+        for(const pair of data.entries()) urlEncoded.append(pair[0], pair[1]);
+
+        try {
+          const r = await fetch('/api/sendgrid_send', {
+            method: 'POST',
+            headers: {'Content-Type':'application/x-www-form-urlencoded'},
+            body: urlEncoded.toString()
+          });
+
+          const parsed = await safeParseJSON(r);
+          if(parsed.json && parsed.json.success){
+            statusEl.textContent = 'Request sent — we will contact you soon.';
+            form.reset();
+          } else {
+            const msg = parsed.json ? (parsed.json.error || parsed.json.message) : parsed.text;
+            statusEl.textContent = 'Final error: ' + (msg || 'Unknown error');
+          }
+        } catch(err){
+          statusEl.textContent = 'Final error: ' + (err.message || err);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'SUBMIT REQUEST';
         }
-      } catch (err) {
-        statusEl.textContent = 'Final error: ' + (err.message || err);
-      } finally {
-        submitBtn.disabled = false;
-      }
-    });
+      });
+    })();
   </script>
 </body>
 </html>
