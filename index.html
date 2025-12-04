@@ -3,214 +3,214 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Suru Digital Care — Digital Support & Assistance</title>
+  <title>Suru Digital Care — Home</title>
 
-  <!-- Inline styles for single-file ease -->
+  <!-- Fonts (system fallback) -->
   <style>
     :root{
-      --green:#0b4938;
-      --green-2:#0f6a50;
-      --card:#f6df77;
-      --accent:#0b3f2f;
-      --white:#fff;
+      --green-900:#073b2e;
+      --green-800:#0b4d3b;
+      --bg-green:#0b4d3b;
+      --card-yellow:#f7df80;
+      --accent:#f2b44a;
+      --muted:#eaf3ef;
+    }
+    html,body{height:100%;margin:0;font-family: "Inter", "Helvetica Neue", Arial, sans-serif; background:linear-gradient(180deg,#0b4d3b 0%, #0a3b2e 60%); color:var(--muted);}
+
+    /* layout */
+    .page { min-height:100vh; display:flex; flex-direction:column; }
+    header.header{ display:flex; align-items:center; justify-content:space-between; padding:26px 48px; position:relative; z-index:80;}
+    .logo-link { display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--muted); }
+    .logo svg{ display:block; }
+    .brand{ font-weight:800; color:var(--accent); font-size:18px; line-height:1; text-shadow:0 2px 0 rgba(0,0,0,0.15);}
+    .brand span{ display:block; font-size:13px; margin-top:2px; color: #ffeaa3; font-weight:700; letter-spacing:0.8px;}
+
+    nav.nav { display:flex; gap:18px; align-items:center; }
+    nav.nav a { color:var(--muted); text-decoration:none; font-weight:600; padding:8px 12px; border-radius:8px; }
+    nav.nav a.services-toggle { background: rgba(9,59,46,0.12); }
+
+    /* wrapper */
+    .hero { flex:1; display:flex; align-items:center; justify-content:center; padding:40px; position:relative; overflow:hidden; }
+    .wrapper { width:100%; max-width:1240px; display:flex; gap:36px; align-items:stretch; }
+
+    /* left text content */
+    .left { flex:1; display:flex; flex-direction:column; justify-content:center; padding-right:30px; max-width:720px; }
+    .left h1{ font-size:92px; line-height:0.94; margin:0 0 18px; color:#e9f4ee; font-weight:900; letter-spacing: -2px; }
+    .lead{ color: rgba(230,245,236,0.95); font-size:18px; margin-bottom:26px; max-width:640px; }
+
+    .buttons { display:flex; gap:12px; margin-top:8px; align-items:center;}
+    .btn{display:inline-block;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 12px 22px rgba(0,0,0,0.18); color:#fff}
+    .btn.paypal{ background:#2fb0da; color:#012; box-shadow:0 8px 20px rgba(0,0,0,0.18); }
+    .btn.email{ background:#9a2b2b; }
+    .btn.whatsapp{ background:#0b4d3b; border:1px solid rgba(255,255,255,0.02); }
+
+    /* right column: estimate card */
+    .right { width:420px; max-width:calc(100% - 40px); margin-left:auto; z-index:90; display:flex; align-items:flex-start; justify-content:flex-end; }
+    .get-estimate-card { background:var(--card-yellow); border-radius:14px; padding:22px; box-shadow: 0 24px 44px rgba(0,0,0,0.34); border:6px solid rgba(0,0,0,0.06); width:100%; box-sizing:border-box; }
+    .get-estimate-card h2{ margin:0 0 14px; color:var(--green-900); font-size:20px; font-weight:900; text-align:center; }
+    .get-estimate-card .field{ margin-bottom:12px; }
+    .get-estimate-card input[type=text], .get-estimate-card input[type=email], .get-estimate-card input[type=tel], .get-estimate-card textarea, .get-estimate-card select {
+      width:100%; padding:12px 12px; border-radius:8px; border:1px solid rgba(0,0,0,0.08); box-sizing:border-box; font-weight:600; color:var(--green-900);
+      background:#fff;
+    }
+    .get-estimate-card textarea { min-height:110px; resize:vertical; }
+    .submit-btn { display:block; width:100%; padding:12px 14px; background:var(--green-900); color:var(--card-yellow); font-weight:900; text-align:center; border-radius:10px; border:3px solid rgba(0,0,0,0.06); cursor:pointer; margin-top:6px; }
+    .status { margin-top:10px; color:#082b22; font-weight:700; font-size:13px; }
+
+    /* footer */
+    footer{ text-align:center; padding:28px 0; color:rgba(230,245,236,0.9); font-size:14px; }
+
+    /* small screens */
+    @media (max-width:1100px){
+      .wrapper{ flex-direction:column; align-items:center; padding:18px; }
+      .left h1{ font-size:48px; text-align:center; }
+      .right{ margin:0 auto; order:2; }
+      .left{ order:1; text-align:center; padding:8px; }
     }
 
-    html,body{height:100%;margin:0;font-family: Inter, system-ui, Arial, sans-serif;background:linear-gradient(180deg,#0a4d39 0%, #0b3f2f 100%);color:#f0f8f3;}
-
-    /* Layout */
-    .header{display:flex;align-items:center;justify-content:space-between;padding:28px 44px;position:relative;z-index:20}
-    .logo{display:flex;align-items:center;gap:12px}
-    .logo svg{width:48px;height:48px}
-    .nav{display:flex;gap:22px;align-items:center}
-    .nav a{color:var(--white);text-decoration:none;opacity:0.95}
-    .nav a:hover{opacity:1;text-decoration:underline}
-
-    /* Services dropdown */
-    .services-wrap{position:relative;display:inline-block}
-    #servicesBtn{background:rgba(255,255,255,0.03);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
-    .services-menu{position:absolute;right:0;top:40px;min-width:220px;background:rgba(6,42,34,0.95);color:#fff;padding:8px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.35);display:none;z-index:40}
-    .services-menu li{padding:8px;cursor:pointer}
-    .services-menu li:hover{background:rgba(255,255,255,0.03)}
-
-    /* Main content split */
-    main.wrapper{display:flex;align-items:center;gap:40px;max-width:1200px;margin:0 auto;padding:20px 40px;position:relative}
-    section.left{flex:1;max-width:640px;position:relative;z-index:10}
-    section.right{width:420px;position:relative;z-index:30}
-
-    h1{font-size:68px;line-height:0.95;margin:0 0 16px;font-weight:800;color:#eaf3ea}
-    p.lead{color:rgba(238,248,241,0.88);font-size:16px;line-height:1.6;max-width:560px}
-
-    /* Call-to-action buttons */
-    .buttons{display:flex;gap:14px;margin-top:18px}
-    .btn{display:inline-block;padding:12px 18px;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,0.25)}
-    .btn.paypal{background:#1da1e9}
-    .btn.email{background:#9e2e2e}
-    .btn.whatsapp{background:#0b3f2f}
-
-    /* form card */
-    .card{background:var(--card);padding:22px;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,0.35);color:var(--accent)}
-    .card h3{text-align:center;margin:0 0 12px;font-size:20px;letter-spacing:1px}
-    .card input,.card textarea, .card select{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);margin-bottom:12px;font-size:14px}
-    .submit{display:block;background:var(--accent);color:var(--card);text-align:center;padding:12px;border-radius:8px;font-weight:800;cursor:pointer}
-    #status{margin-top:8px;color:var(--accent);font-size:13px}
-
-    footer{padding:22px;text-align:center;color:rgba(255,255,255,0.85);z-index:10}
-
-    /* Background artwork (staff) and overlay */
-    .bg-art{position:absolute;right:3%;top:6%;width:56%;height:88%;background-image:url('assets/staff_bg.png');background-size:contain;background-repeat:no-repeat;background-position:center right;opacity:0.98;z-index:1;pointer-events:none}
-    .bg-overlay{position:absolute;right:0;top:0;width:60%;height:100%;background:linear-gradient(90deg, rgba(11,73,56,0.62) 0%, rgba(11,73,56,0.28) 40%, rgba(11,73,56,0) 100%);z-index:2;pointer-events:none}
-
-    /* keep header and main content above artwork */
-    .header, .wrapper, .left, .right, footer, nav { position: relative; z-index: 10; }
-
-    /* ensure form is topmost */
-    .right { z-index: 30; }
-
-    /* responsive */
-    @media(max-width:980px){
-      main.wrapper{flex-direction:column;align-items:stretch;padding:24px}
-      .bg-art,.bg-overlay{display:none}
-      h1{font-size:40px}
-      .right{width:100%}
-    }
+    /* keep artwork (if present) behind */
+    .bg-art { position:absolute; right:0; top:8%; width:58%; height:82%; z-index:20; opacity:0.95; pointer-events:none; background-repeat:no-repeat; background-position:center right; background-size:contain; filter: drop-shadow(0 40px 60px rgba(0,0,0,0.3)); }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="logo">
-      <!-- simple pyramid svg logo -->
-      <svg viewBox="0 0 64 64" aria-hidden="true">
-        <polygon points="32,6 58,52 6,52" fill="#f7c33a"/>
-        <polygon points="32,10 50,48 14,48" fill="#d6a92a"/>
-      </svg>
-      <div style="font-weight:800;color:#f7e8a8">SURU<br><span style="font-weight:600">DIGITAL CARE</span></div>
-    </div>
+  <div class="page">
 
-    <nav class="nav" role="navigation">
-      <a href="index.html">Home</a>
-      <a href="contact.html">Contact Us</a>
+    <!-- header -->
+    <header class="header">
+      <a class="logo-link" href="index.html" aria-label="Suru Digital Care home">
+        <!-- inline pyramid svg -->
+        <svg width="64" height="64" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ffde3a"/><stop offset="1" stop-color="#f2b44a"/></linearGradient></defs>
+          <polygon points="50,6 94,86 6,86" fill="url(#g1)" stroke="#b77f09" stroke-width="1.5"/>
+          <path d="M50 18 L80 80 L20 80 Z" fill="rgba(0,0,0,0.06)"/>
+        </svg>
+        <div class="brand">SURU<br/><span>DIGITAL</span><br/>CARE</div>
+      </a>
 
-      <div class="services-wrap" aria-haspopup="true">
-        <button id="servicesBtn">Services ▾</button>
-        <ul id="servicesMenu" class="services-menu" aria-hidden="true">
-          <li>Remote Technical Support</li>
-          <li>Account Support & Recovery Guidance</li>
-          <li>Online Consulting</li>
-          <li>Website Support & Troubleshooting</li>
-          <li>Device Setup Assistance</li>
-          <li>Data & File Assistance</li>
-          <li>General Digital Help</li>
-        </ul>
-      </div>
-    </nav>
-  </header>
- 
-  <main class="wrapper" role="main">
-    <section class="left">
-      <h1>DIGITAL SUPPORT &amp; ASSISTANCE SERVICES</h1>
-      <p class="lead">We provide remote digital assistance, online consulting &amp; guidance, technical help, account support, and troubleshooting services. All services are delivered online instantly. Please use the Get Estimate Now form to contact us.</p>
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="#" class="services-toggle" id="servicesToggle">Services ▾</a>
+      </nav>
+    </header>
 
-      <div class="buttons">
-        <a class="btn paypal" href="https://www.paypal.me/SuruSilver" target="_blank" rel="noopener">Pay with PayPal</a>
-        <a class="btn email" href="mailto:SuruDigitalCare@gmail.com">Email Us</a>
-        <a class="btn whatsapp" href="https://wa.me/00918866362533" target="_blank" rel="noopener">WhatsApp Us</a>
+    <!-- hero -->
+    <section class="hero">
+      <div class="wrapper">
+
+        <!-- left column -->
+        <div class="left" aria-hidden="false">
+          <h1>DIGITAL SUPPORT &amp; ASSISTANCE SERVICES</h1>
+          <p class="lead">We provide remote digital assistance, online consulting &amp; guidance, technical help, account support, and troubleshooting services. All services are delivered online instantly. Please use the Get Estimate Now form to contact us.</p>
+
+          <div class="buttons" role="group" aria-label="Contact buttons">
+            <a class="btn paypal" href="https://www.paypal.me/SuruSilver" target="_blank" rel="noopener">Pay with PayPal</a>
+            <a class="btn email" href="mailto:SuruDigitalCare@gmail.com">Email Us</a>
+            <a class="btn whatsapp" href="https://wa.me/00918866362533" target="_blank" rel="noopener">WhatsApp Us</a>
+          </div>
+        </div>
+
+        <!-- right column (form) -->
+        <aside class="right" aria-labelledby="estimateHeading">
+          <form id="estimateForm" class="get-estimate-card" autocomplete="off" novalidate>
+            <h2 id="estimateHeading">GET ESTIMATE NOW</h2>
+
+            <div class="field"><input id="name" name="name" type="text" placeholder="Name" required></div>
+            <div class="field"><input id="email" name="email" type="email" placeholder="Email" required></div>
+            <div class="field"><input id="phone" name="phone" type="tel" placeholder="Phone (optional)"></div>
+
+            <div class="field">
+              <select id="service" name="service" required>
+                <option value="">Service needed</option>
+                <option>Remote Technical Support</option>
+                <option>Account Support & Recovery Guidance</option>
+                <option>Online Consulting</option>
+                <option>Website Support & Troubleshooting</option>
+                <option>Device Setup Assistance</option>
+                <option>Data & File Assistance</option>
+                <option>General Digital Help</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <textarea id="message" name="message" placeholder="Explain your problem / service needed"></textarea>
+            </div>
+
+            <button id="submitBtn" class="submit-btn" type="submit">SUBMIT REQUEST</button>
+            <div id="status" class="status" role="status" aria-live="polite"></div>
+          </form>
+        </aside>
+
+        <!-- optional background artwork (kept behind everything) -->
+        <!-- To remove background art entirely, delete or comment out this div -->
+        <!-- <div class="bg-art" style="background-image:url('assets/staff_bg.png');"></div> -->
+
       </div>
     </section>
 
-    <section class="right">
-      <div class="card" role="form" aria-labelledby="estimate-title">
-        <h3 id="estimate-title">GET ESTIMATE NOW</h3>
+    <footer>
+      © 2025 Suru Digital Care — All rights reserved.
+    </footer>
+  </div>
 
-        <form id="estimateForm" autocomplete="on">
-          <input name="name" id="name" placeholder="Name" required />
-          <input name="email" id="email" type="email" placeholder="Email" required />
-          <input name="phone" id="phone" placeholder="Phone (optional)" />
-          <select name="service" id="service" required>
-            <option value="">Service needed</option>
-            <option>Remote Technical Support</option>
-            <option>Account Support & Recovery Guidance</option>
-            <option>Online Consulting</option>
-            <option>Website Support & Troubleshooting</option>
-            <option>Device Setup Assistance</option>
-            <option>Data & File Assistance</option>
-            <option>General Digital Help</option>
-          </select>
-          <textarea name="message" id="message" rows="4" placeholder="Explain your problem / service needed" required></textarea>
-
-          <button id="submitBtn" type="submit" class="submit">SUBMIT REQUEST</button>
-          <div id="status" role="status" aria-live="polite"></div>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer>© 2025 Suru Digital Care — All rights reserved.</footer>
-
-  <!-- JS: form + services menu toggle -->
+  <!-- JS: form submit to /api/sendgrid_send  -->
   <script>
-    // Services menu toggle
     (function(){
-      const btn = document.getElementById('servicesBtn');
-      const menu = document.getElementById('servicesMenu');
-
-      function closeMenu(){ menu.style.display='none'; btn.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); }
-      function openMenu(){ menu.style.display='block'; btn.setAttribute('aria-expanded','true'); menu.setAttribute('aria-hidden','false'); }
-
-      btn.addEventListener('click', (e)=> {
-        e.stopPropagation();
-        (menu.style.display === 'block') ? closeMenu() : openMenu();
-      });
-
-      document.addEventListener('click', (e)=> {
-        if(!menu.contains(e.target) && e.target !== btn) closeMenu();
-      });
-      document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') closeMenu(); });
-    })();
-
-    // Form submit (POST to serverless route /api/sendgrid_send)
-    document.addEventListener('DOMContentLoaded', function(){
       const form = document.getElementById('estimateForm');
-      const status = document.getElementById('status');
+      const statusEl = document.getElementById('status');
       const submitBtn = document.getElementById('submitBtn');
 
-      // helper to safely parse non-json or JSON responses
-      async function safeParseJSON(response){
-        const text = await response.text();
-        try { return { json: JSON.parse(text), text }; } catch(e) { return { json: null, text }; }
+      function safeParseJSON(respText){
+        try { return { json: JSON.parse(respText) }; } catch(e){ return { text: respText }; }
       }
 
-      form.addEventListener('submit', async function (e){
+      form.addEventListener('submit', async function(e){
         e.preventDefault();
+        statusEl.textContent = '';
         submitBtn.disabled = true;
-        status.textContent = 'Sending...';
+        submitBtn.textContent = 'Sending...';
 
-        // url-encoded payload to match simple serverless handler
-        const data = new FormData(form);
+        // simple front validation
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const service = form.service.value.trim();
+        if(!name || !email || !service){
+          statusEl.textContent = 'Please fill Name, Email and Service.';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'SUBMIT REQUEST';
+          return;
+        }
+
+        // build x-www-form-urlencoded body (server expects this)
+        const fd = new FormData(form);
         const params = new URLSearchParams();
-        for(const pair of data.entries()) params.append(pair[0], pair[1]);
+        for(const pair of fd.entries()) params.append(pair[0], pair[1]);
 
         try {
           const r = await fetch('/api/sendgrid_send', {
             method: 'POST',
-            headers: {'Content-Type':'application/x-www-form-urlencoded'},
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: params.toString()
           });
 
-          const parsed = await safeParseJSON(r);
-          if(parsed.json && parsed.json.success){
-            status.textContent = 'Request sent — we will contact you soon.';
+          const text = await r.text();
+          const parsed = safeParseJSON(text);
+
+          if(r.ok && parsed.json && parsed.json.success){
+            statusEl.textContent = 'Request sent — we will contact you soon.';
             form.reset();
           } else {
-            const msg = parsed.json ? (parsed.json.error||JSON.stringify(parsed.json)) : parsed.text;
-            status.textContent = 'Final error: ' + (msg || 'Unknown error');
+            const msg = parsed.json && parsed.json.error ? parsed.json.error : (parsed.text || 'Unknown error');
+            statusEl.textContent = 'Final error: ' + msg;
           }
-        } catch (err) {
-          status.textContent = 'Final error: ' + (err && err.message || String(err));
+        } catch (err){
+          statusEl.textContent = 'Final error: ' + (err.message || 'Network error');
         } finally {
           submitBtn.disabled = false;
+          submitBtn.textContent = 'SUBMIT REQUEST';
         }
       });
-    });
+    })();
   </script>
 </body>
 </html>
