@@ -30,8 +30,10 @@
     /* header */
     header{display:flex;align-items:center;justify-content:space-between;padding:20px 40px;box-sizing:border-box;max-width:1200px;margin:0 auto}
     .brand{display:flex;align-items:center;gap:16px}
-    .brand img{width:64px;height:64px;object-fit:contain}
-    .brand .title{font-weight:900;color:var(--accent-yellow);font-size:22px;letter-spacing:2px}
+    /* removed image - centered larger stacked title */
+    .brand .title{font-weight:900;color:var(--accent-yellow);font-size:26px;letter-spacing:1px;line-height:1}
+    .brand .title span{display:block;font-size:22px}
+
     nav{display:flex;gap:26px;align-items:center}
     nav a{color:var(--text-light);text-decoration:none;padding:8px 10px;border-radius:8px;font-size:16px}
     nav a:hover{background:var(--nav-item-bg)}
@@ -88,11 +90,9 @@
 <body>
 
   <header>
-    <!-- pyramid logo + stacked text -->
-    <div class="brand">
-      <!-- Replace with your pyramid image in assets folder -->
-      <img src="assets/pyramid.png" alt="pyramid logo">
-      <div class="title">SURU<br> DIGITAL<br> CARE</div>
+    <!-- removed pyramid image; brand only text -->
+    <div class="brand" aria-hidden="false">
+      <div class="title">SURU <span>DIGITAL CARE</span></div>
     </div>
 
     <nav>
@@ -123,8 +123,7 @@
 
         <div class="btn-row">
           <!-- PayPal styled button -->
-          <a class="btn paypal" href="https://www.paypal.me/SuruSilver" target="_blank" rel="noopener">
-            <!-- simple Paypal SVG -->
+          <a class="btn paypal" href="https://www.paypal.me/SuruSilver" target="_blank" rel="noopener" aria-label="Pay with PayPal">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
               <path d="M6 3h8l-1 6H9.2L8 18H6z" fill="#fff"/>
               <path d="M10 3h6l-1 6h-3.8L10 3z" fill="#0070ba" opacity="0.2"/>
@@ -133,7 +132,7 @@
           </a>
 
           <!-- Email -->
-          <a class="btn email" href="mailto:SuruDigitalCare@gmail.com">
+          <a class="btn email" href="mailto:SuruDigitalCare@gmail.com" aria-label="Email Us">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
               <path d="M3 6.5L12 12 21 6.5V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6.5z" fill="#fff"/>
               <path d="M3 6.5L12 12 21 6.5" stroke="#fff" stroke-opacity=".6"/>
@@ -142,7 +141,7 @@
           </a>
 
           <!-- WhatsApp -->
-          <a class="btn whatsapp" href="https://wa.me/00918866362533" target="_blank" rel="noopener">
+          <a class="btn whatsapp" href="https://wa.me/00918866362533" target="_blank" rel="noopener" aria-label="WhatsApp Us">
             <svg viewBox="0 0 24 24" aria-hidden xmlns="http://www.w3.org/2000/svg" fill="#fff">
               <path d="M12 2a10 10 0 0 0-8.7 15.1L2 22l4.9-1.3A10 10 0 1 0 12 2z"/>
             </svg>
