@@ -5,228 +5,83 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Suru Digital Care</title>
 
-  <!-- Google font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --green:#0f4f3d;       /* main dark green */
-      --green-2:#0b3f34;    /* darker */
-      --accent:#f5d271;     /* yellow card */
-      --card:#ffd97a;       /* card pale */
-      --muted:#dfe8e1;
+      --green:#0f4f3d;
+      --green-2:#0b3f34;
+      --accent:#f5d271;
+      --card:#ffd97a;
       --pay-blue:#009cde;
       --mail-red:#b02b2b;
       --wh-green:#25D366;
       --shadow: 0 18px 30px rgba(5,30,20,0.28);
-      --round:14px;
     }
 
-    html,body{
-      height:100%;
-      margin:0;
-      font-family:"Inter",system-ui,Arial,sans-serif;
-      background: linear-gradient(180deg, var(--green) 0%, #0b3f34 100%);
-      color:#e6f1ea;
-    }
+    html,body{height:100%;margin:0;font-family:"Inter",system-ui,Arial,sans-serif;background:linear-gradient(180deg,var(--green),var(--green-2));color:#e6f1ea;}
 
     /* header */
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:22px 56px;
-      max-width:1200px;
-      margin:0 auto;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-    .brand img{
-      width:60px;
-      height:60px;
-      object-fit:contain;
-    }
-    .brand .brand-text{
-      font-weight:800;
-      color:#f3ca5a;
-      font-size:20px;
-      line-height:1;
-      letter-spacing:1px;
-    }
-    nav.nav{
-      display:flex;
-      gap:22px;
-      align-items:center;
-    }
-    nav.nav a{
-      color: #e7f6ee;
-      text-decoration:none;
-      font-weight:500;
-      padding:10px 12px;
-      border-radius:8px;
-    }
+    header{display:flex;align-items:center;justify-content:space-between;padding:20px 56px;max-width:1200px;margin:0 auto;box-sizing:border-box;}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{width:78px;height:78px;object-fit:contain}
+    .brand .brand-text{font-weight:900;color:#f3ca5a;font-size:28px;line-height:1; letter-spacing:1px; text-shadow:0 3px 0 rgba(0,0,0,0.18)}
+    nav.nav{display:flex;gap:22px;align-items:center}
+    nav.nav a{color:#e7f6ee;text-decoration:none;font-weight:600;padding:8px 10px;border-radius:8px}
+
     /* services dropdown */
-    .services-wrap{
-      position:relative;
-    }
-    .services-toggle{
-      background:rgba(10,30,20,0.18);
-      padding:8px 12px;
-      border-radius:8px;
-      cursor:pointer;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      color:#dff0e6;
-    }
+    .services-wrap{position:relative}
+    .services-toggle{background:rgba(0,0,0,0.12);padding:8px 12px;border-radius:8px;cursor:pointer;color:#e7f6ee;display:inline-flex;align-items:center;gap:8px}
     .dropdown{
-      position:absolute;
-      right:0;
-      top:46px;
-      min-width:220px;
-      background:linear-gradient(180deg,#ffffff, #f1f7f3);
-      color:#0b3f34;
-      border-radius:12px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-      padding:12px;
-      display:none;
-      z-index:50;
+      position:absolute; right:0; top:44px; min-width:250px;
+      background: rgba(9,37,29,0.98); color:#fff; border-radius:12px;
+      box-shadow: 0 25px 40px rgba(0,0,0,0.35); padding:12px; display:none; z-index:9999;
     }
-    .dropdown h4{ margin:4px 0 9px; font-size:14px; color:#0b3f34; }
-    .dropdown a{
-      display:block;
-      padding:8px 8px;
-      border-radius:8px;
-      color:#0b3f34;
-      text-decoration:none;
-      opacity:0.95;
-      margin-bottom:6px;
-      font-weight:600;
-    }
-    .dropdown a:hover{ background:rgba(0,0,0,0.04); }
+    .dropdown h4{margin:0 0 8px;font-size:14px;color:#dff6ec}
+    .dropdown a{display:block;padding:8px 10px;border-radius:8px;color:#e8f6ef;text-decoration:none;opacity:0.95;margin-bottom:6px;font-weight:600}
+    .dropdown a:hover{background:rgba(255,255,255,0.04)}
 
-    /* main layout */
-    .container{
-      max-width:1200px;
-      margin: 22px auto 60px;
-      display:flex;
-      gap:30px;
-      align-items:flex-start;
-      padding:22px;
-    }
+    /* layout */
+    .container{max-width:1200px;margin:22px auto 60px;display:flex;gap:30px;align-items:flex-start;padding:22px}
+    .left{width:60%;padding:40px 20px}
+    .left h1{font-size:96px;line-height:0.92;margin:0 0 18px;color:#f1fbf4;font-weight:900;text-shadow:0 6px 0 rgba(0,0,0,0.06)}
+    .left p{color:#d6eadf;max-width:640px;font-size:16px;line-height:1.6}
 
-    .left{
-      width:60%;
-      padding:40px 20px;
-    }
-    .left h1{
-      font-size:96px;
-      line-height:0.92;
-      margin:0 0 20px;
-      color: #ecf7ef;
-      font-weight:900;
-      text-shadow: 0 6px 0 rgba(0,0,0,0.06);
-    }
-    .left p{
-      color: #d6eadf;
-      max-width:640px;
-      font-size:16px;
-      line-height:1.6;
-    }
+    .actions{margin:26px 0 0;display:flex;gap:16px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:10px;font-weight:800;color:#fff;text-decoration:none;box-shadow:0 18px 30px rgba(0,0,0,0.25)}
+    .btn svg{width:18px;height:18px;filter:drop-shadow(0 1px 0 rgba(0,0,0,0.12))}
+    .btn-pay{background:var(--pay-blue)}
+    .btn-mail{background:var(--mail-red)}
+    .btn-wh{background:var(--wh-green); color:#00311b}
 
-    /* action buttons */
-    .actions{
-      margin:26px 0 0;
-      display:flex;
-      gap:16px;
-      align-items:center;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 18px;
-      border-radius:10px;
-      font-weight:700;
-      color:#fff;
-      box-shadow: 0 18px 30px rgba(0,0,0,0.25);
-      text-decoration:none;
-    }
-    .btn svg{ width:18px; height:18px; filter:drop-shadow(0 2px 0 rgba(0,0,0,0.15)); }
+    .right{flex:1;display:flex;justify-content:flex-end;padding:20px}
+    .card{width:360px;background:var(--card);border-radius:16px;padding:22px;box-shadow:var(--shadow);border:6px solid rgba(0,0,0,0.06)}
+    .card h3{margin:0 0 10px;color:var(--green-2);font-weight:900;text-align:center}
+    .field{display:block;margin-bottom:12px}
+    .field input,.field textarea,.field select{width:100%;padding:12px 14px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);font-size:14px;box-sizing:border-box}
+    .field textarea{min-height:100px;resize:vertical}
+    .submit{display:block;margin-top:10px;background:var(--green-2);color:#f6e9c2;font-weight:800;border:none;padding:12px 18px;border-radius:10px;cursor:pointer;width:100%}
+    .status{display:block;margin-top:8px;color:#102a23;font-weight:700}
 
-    .btn-pay{background:var(--pay-blue);}
-    .btn-mail{background:var(--mail-red);}
-    .btn-wh{background:var(--wh-green); color:#002b1f; }
+    footer{text-align:center;padding:34px 12px;color:#d8e7dd;opacity:0.9}
 
-    /* card/form */
-    .right{
-      flex:1;
-      display:flex;
-      justify-content:flex-end;
-      padding:20px;
-    }
-    .card{
-      width:360px;
-      background:var(--card);
-      border-radius:16px;
-      padding:22px;
-      box-shadow: var(--shadow);
-      border:6px solid rgba(0,0,0,0.06);
-    }
-    .card h3{ margin:0 0 10px; color:var(--green-2); font-weight:800; text-align:center; }
-    .field{ display:block; margin-bottom:12px; }
-    .field input,.field textarea,.field select{
-      width:100%;
-      padding:12px 14px;
-      border-radius:8px;
-      border:1px solid rgba(0,0,0,0.06);
-      font-size:14px;
-      box-sizing:border-box;
-      outline:none;
-    }
-    .field textarea{ min-height:100px; resize:vertical; }
-    .submit{
-      display:block;
-      margin-top:10px;
-      background:var(--green-2);
-      color:#f6e9c2;
-      font-weight:800;
-      border:none;
-      padding:12px 18px;
-      border-radius:10px;
-      cursor:pointer;
-      width:100%;
-    }
-    .status{
-      display:block;
-      margin-top:8px;
-      color:#102a23;
-      font-weight:700;
-    }
-
-    /* footer */
-    footer{ text-align:center; padding:34px 12px; color:#d8e7dd; opacity:0.9; }
-
-    /* responsive */
     @media(max-width:980px){
-      .container{ flex-direction:column; align-items:center; padding:10px; }
-      .left{ width:100%; padding:10px; text-align:center; }
-      .left h1{ font-size:52px; }
-      .right{ width:100%; justify-content:center; }
-      header{ padding:14px 18px; }
+      .container{flex-direction:column;align-items:center;padding:10px}
+      .left{width:100%;padding:10px;text-align:center}
+      .left h1{font-size:52px}
+      .right{width:100%;justify-content:center}
+      header{padding:14px 18px}
+      .brand .brand-text{font-size:20px}
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="brand">
-      <!-- pyramid logo file must be at: assets/pyramid.png -->
-      <img src="assets/pyramid.png" alt="pyramid logo" id="brand-logo">
-      <div class="brand-text">SURU<br><span style="font-weight:700">DIGITAL</span> CARE</div>
+    <div class="brand" aria-hidden="false">
+      <!-- make sure file exists at: assets/pyramid.png (case-sensitive) -->
+      <img src="assets/pyramid.png" alt="pyramid logo" id="brand-logo" onerror="this.style.display='none'">
+      <div class="brand-text">SURU<br><span style="font-weight:900">DIGITAL</span> CARE</div>
     </div>
 
     <nav class="nav" role="navigation" aria-label="top navigation">
@@ -235,6 +90,7 @@
 
       <div class="services-wrap">
         <div class="services-toggle" id="servicesToggle">Services ▾</div>
+
         <div class="dropdown" id="servicesDropdown" aria-hidden="true">
           <h4>Our services</h4>
           <a href="#">Remote Technical Support</a>
@@ -256,19 +112,16 @@
 
       <div class="actions">
         <a class="btn btn-pay" href="https://www.paypal.com/" target="_blank" rel="noopener">
-          <!-- PayPal icon -->
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6h10l-1.2 7.2c-.2 1.2-1.3 2-2.5 2H8.2L9 6z" fill="#fff"/></svg>
           Pay with PayPal
         </a>
 
         <a class="btn btn-mail" href="mailto:SuruDigitalCare@gmail.com" target="_blank" rel="noopener">
-          <!-- envelope -->
           <svg viewBox="0 0 24 24" fill="none"><path d="M3 6.5l9 6 9-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Email Us
         </a>
 
         <a class="btn btn-wh" href="https://wa.me/00918866362533" target="_blank" rel="noopener">
-          <!-- whatsapp -->
           <svg viewBox="0 0 24 24" fill="none"><path d="M21 13.5A8.5 8.5 0 1 1 12.5 5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           WhatsApp Us
         </a>
@@ -307,15 +160,16 @@
   <footer>© 2025 Suru Digital Care — All rights reserved.</footer>
 
   <script>
-    // Dropdown toggle
+    // dropdown toggle + close outside
     const toggle = document.getElementById('servicesToggle');
     const dd = document.getElementById('servicesDropdown');
+
     toggle.addEventListener('click', (e) => {
-      const open = dd.style.display === 'block';
-      dd.style.display = open ? 'none' : 'block';
-      dd.setAttribute('aria-hidden', open ? 'true' : 'false');
+      const isOpen = dd.style.display === 'block';
+      dd.style.display = isOpen ? 'none' : 'block';
+      dd.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
     });
-    // close dropdown if click outside
+
     document.addEventListener('click', (e) => {
       if (!toggle.contains(e.target) && !dd.contains(e.target)) {
         dd.style.display = 'none';
@@ -323,7 +177,7 @@
       }
     });
 
-    // Form submit - uses your existing API path /api/sendgrid_send
+    // form submit (keeps your existing API path)
     const form = document.getElementById('estimateForm');
     const statusEl = document.getElementById('status');
     const submitBtn = document.getElementById('submitBtn');
