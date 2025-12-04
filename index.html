@@ -1,68 +1,126 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Suru Digital Care</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg1:#0f5f46;--bg2:#0b4938;--accent:#ffd85a;--card:#ffe78a;--text:#eaf6f0;--dark:#072e24}
-*{box-sizing:border-box;font-family:Inter, system-ui, Arial, sans-serif}
+:root{
+  --bg1:#0f5f46;
+  --bg2:#0b4938;
+  --accent:#ffd85a;
+  --card:#ffe78a;
+  --text:#eaf6f0;
+  --dark:#072e24;
+}
+
+/* Reset & base */
+*{box-sizing:border-box;font-family:Inter,system-ui,Arial,sans-serif}
 html,body{height:100%;margin:0}
-body{background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--text);-webkit-font-smoothing:antialiased}
-.header{display:flex;align-items:center;justify-content:space-between;padding:26px 48px}
+body{
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;padding:22px 44px;z-index:6;position:relative}
 .logo{display:flex;align-items:center;gap:14px}
-.logo svg{width:80px;height:80px}
-.brand{font-weight:800;color:var(--accent);line-height:1;font-size:20px}
-.nav{display:flex;gap:12px;align-items:center}
+.logo svg{width:72px;height:72px}
+.brand{font-weight:800;color:var(--accent);line-height:1;font-size:18px}
+.nav{display:flex;gap:20px;align-items:center}
 .nav a{color:var(--text);text-decoration:none;font-size:16px;padding:6px 8px}
 
-/* main layout */
-.container{max-width:1200px;margin:0 auto;padding:40px 20px;display:flex;align-items:flex-start;gap:28px;position:relative}
-.left{flex:1;min-width:520px;z-index:3}
-.left h1{font-size:84px;margin:0 0 18px;font-weight:900;line-height:1.02}
-.lead{font-size:18px;color:#dff3ec;line-height:1.6;margin-bottom:22px;max-width:720px}
+/* layout */
+.wrapper{max-width:1220px;margin:0 auto;padding:36px 20px;position:relative;display:flex;gap:28px;align-items:flex-start}
+.left{flex:1;min-width:520px;z-index:4}
+.left h1{font-size:72px;margin:0 0 18px;font-weight:900;line-height:1.02}
+.lead{font-size:17px;color:#dff3ec;line-height:1.6;margin-bottom:22px;max-width:720px}
+
+/* CTA buttons */
 .buttons{display:flex;gap:12px;margin-top:8px}
 .btn{padding:12px 18px;border-radius:10px;font-weight:700;text-decoration:none;display:inline-block}
 .btn.paypal{background:#22b6e6;color:#072e24}
 .btn.email{background:#8b2f2f;color:#fff}
 .btn.whatsapp{background:#14532d;color:#fff}
 
-/* right card */
-.right{width:460px;flex:0 0 460px;align-self:flex-start;margin-top:8px;z-index:4}
+/* right card/form */
+.right{width:460px;flex:0 0 460px;align-self:flex-start;margin-top:8px;z-index:5;position:relative}
 .card{background:var(--card);padding:22px;border-radius:18px;box-shadow:0 28px 60px rgba(0,0,0,0.45);color:var(--dark);position:relative}
+.card h2{margin:0 0 12px;font-size:20px;letter-spacing:1px}
 .field input,.field textarea,.field select{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:1px solid rgba(0,0,0,0.06);font-size:15px;background:#fff}
 .field textarea{min-height:120px;resize:vertical}
 #submitBtn{width:100%;padding:12px;border-radius:10px;border:0;background:#0b3b2e;color:var(--accent);font-weight:800;font-size:15px;cursor:pointer}
 .status{margin-top:12px;color:#072e24;font-weight:600;font-size:14px}
 
-/* full-background artwork on the right */
-.bg-art{position:absolute;right:4%;top:6%;width:56%;height:88%;background-image:url('assets/staff_bg.png');background-size:cover;background-position:center right;opacity:0.95;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.35));z-index:1}
+/* background artwork (right side) */
+.bg-art{
+  position:absolute;
+  right:3%;
+  top:6%;
+  width:56%;
+  height:88%;
+  background-image:url('assets/staff_bg.png');
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center right;
+  opacity:0.96;
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,0.35));
+  z-index:1; /* behind content */
+  pointer-events:none;
+}
 
-/* subtle overlay to keep text legible */
-.bg-overlay{position:absolute;right:0;top:0;width:60%;height:100%;background:linear-gradient(90deg, rgba(11,73,56,0.55) 0%, rgba(11,73,56,0.25) 50%, rgba(11,73,56,0.0) 100%);z-index:2}
+/* subtle overlay to keep left text legible where artwork overlaps */
+.bg-overlay{
+  position:absolute;
+  right:0;
+  top:0;
+  width:60%;
+  height:100%;
+  background:linear-gradient(90deg, rgba(11,73,56,0.62) 0%, rgba(11,73,56,0.28) 40%, rgba(11,73,56,0.0) 100%);
+  z-index:2;
+  pointer-events:none;
+}
 
 /* footer */
-.footer{padding:28px 20px;text-align:center;color:#cfeee3;margin-top:64px;border-top:1px solid rgba(255,255,255,0.02);z-index:3}
+.footer{padding:28px 20px;text-align:center;color:#cfeee3;margin-top:60px;border-top:1px solid rgba(255,255,255,0.02);z-index:4;position:relative}
 
 /* responsive */
-@media(max-width:1100px){.container{flex-direction:column;padding:24px}.left h1{font-size:40px}.right{width:100%}.bg-art{display:none}}
+@media(max-width:1100px){
+  .wrapper{flex-direction:column;padding:24px}
+  .left h1{font-size:40px}
+  .right{width:100%}
+  .bg-art,.bg-overlay{display:none}
+}
 </style>
 </head>
 <body>
 <header class="header">
-  <div class="logo"><a href="index.html" aria-label="home">
-    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ffe07a"/><stop offset="1" stop-color="#f2bf4a"/></linearGradient></defs><polygon points="100,12 12,172 188,172" fill="url(#g1)" stroke="#0b3b2e" stroke-width="4"/></svg></a><div class="brand">SURU<br/>DIGITAL CARE</div></div>
-  <nav class="nav"><a href="index.html">Home</a><a href="contact.html">Contact Us</a><div class="dropdown"><a href="#">Services ▾</a></div></nav>
+  <div class="logo">
+    <a href="index.html" aria-label="home">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ffe07a"/><stop offset="1" stop-color="#f2bf4a"/></linearGradient></defs><polygon points="100,12 12,172 188,172" fill="url(#g1)" stroke="#0b3b2e" stroke-width="4"/></svg>
+    </a>
+    <div class="brand">SURU<br/>DIGITAL CARE</div>
+  </div>
+
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="#" aria-haspopup="true">Services ▾</a>
+  </nav>
 </header>
 
-<main class="container">
-  <div class="bg-art" aria-hidden="true"></div>
-  <div class="bg-overlay" aria-hidden="true"></div>
+<!-- artwork and overlay -->
+<div class="bg-art" aria-hidden="true"></div>
+<div class="bg-overlay" aria-hidden="true"></div>
 
+<main class="wrapper">
   <section class="left">
     <h1>DIGITAL SUPPORT &amp; ASSISTANCE SERVICES</h1>
     <p class="lead">We provide remote digital assistance, online consulting &amp; guidance, technical help, account support, and troubleshooting services. All services are delivered online instantly. Please use the Get Estimate Now form to contact us.</p>
+
     <div class="buttons">
       <a class="btn paypal" href="https://www.paypal.me/SuruSilver" target="_blank" rel="noopener">Pay with PayPal</a>
       <a class="btn email" href="mailto:SuruDigitalCare@gmail.com">Email Us</a>
@@ -76,7 +134,16 @@ body{background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--text);
       <label class="field"><input name="name" placeholder="Name" required/></label>
       <label class="field"><input name="email" type="email" placeholder="Email" required/></label>
       <label class="field"><input name="phone" placeholder="Phone (optional)"/></label>
-      <label class="field"><select name="service" required><option value="">Service needed</option><option>Remote Technical Support</option><option>Account Support &amp; Recovery Guidance</option><option>Online Consulting</option><option>Website Support &amp; Troubleshooting</option><option>Device Setup Assistance</option><option>Data &amp; File Assistance</option><option>General Digital Help</option></select></label>
+      <label class="field"><select name="service" required>
+        <option value="">Service needed</option>
+        <option>Remote Technical Support</option>
+        <option>Account Support &amp; Recovery Guidance</option>
+        <option>Online Consulting</option>
+        <option>Website Support &amp; Troubleshooting</option>
+        <option>Device Setup Assistance</option>
+        <option>Data &amp; File Assistance</option>
+        <option>General Digital Help</option>
+      </select></label>
       <label class="field"><textarea name="message" placeholder="Explain your problem / service needed" required></textarea></label>
       <button type="submit" id="submitBtn">SUBMIT REQUEST</button>
       <div id="status" class="status" role="status" aria-live="polite"></div>
@@ -87,13 +154,43 @@ body{background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--text);
 <footer class="footer">&copy; 2025 Suru Digital Care — All rights reserved.</footer>
 
 <script>
+/* small helper to send form as URL encoded (Vercel handler expects this) */
 async function safeParseJSON(resp){ const text = await resp.text(); try{ return {ok:resp.ok, json:JSON.parse(text)} }catch(e){ return {ok:resp.ok, text:text} } }
-document.addEventListener('DOMContentLoaded', function(){ const form=document.getElementById('estimateForm'), status=document.getElementById('status'), submitBtn=document.getElementById('submitBtn');
-  form.addEventListener('submit', async function(e){ e.preventDefault(); submitBtn.disabled=true; status.textContent='Sending...'; const data=new FormData(form);
-    const urlEncoded = new URLSearchParams(); for(const pair of data.entries()) urlEncoded.append(pair[0], pair[1]);
-    try{ const r = await fetch('/api/sendgrid_send', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: urlEncoded.toString() }); const parsed = await safeParseJSON(r);
-      if(parsed.json && parsed.json.success){ status.textContent='Request sent — we will contact you soon.'; form.reset(); submitBtn.disabled=false; return; }
-      const msg = parsed.json ? parsed.json.error : parsed.text; status.textContent = 'Final error: ' + (msg || 'Unknown error');
-    } catch(err){ status.textContent = 'Final error: ' + err.message; } finally { submitBtn.disabled=false; } }); });
+document.addEventListener('DOMContentLoaded', function(){
+  const form = document.getElementById('estimateForm'),
+        status = document.getElementById('status'),
+        submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    status.textContent = 'Sending...';
+
+    const data = new FormData(form);
+    const urlEncoded = new URLSearchParams();
+    for (const pair of data.entries()) urlEncoded.append(pair[0], pair[1]);
+
+    try {
+      const r = await fetch('/api/sendgrid_send', {
+        method: 'POST',
+        headers: {'Content-Type':'application/x-www-form-urlencoded'},
+        body: urlEncoded.toString()
+      });
+      const parsed = await safeParseJSON(r);
+      if (parsed.json && parsed.json.success) {
+        status.textContent = 'Request sent — we will contact you soon.';
+        form.reset();
+      } else {
+        const msg = parsed.json ? parsed.json.error : parsed.text;
+        status.textContent = 'Final error: ' + (msg || 'Unknown error');
+      }
+    } catch (err) {
+      status.textContent = 'Final error: ' + err.message;
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+});
 </script>
-</body></html>
+</body>
+</html>
