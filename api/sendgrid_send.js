@@ -1,4 +1,4 @@
-// api/sendgrid_send.js - robust, no deps
+// api/sendgrid_send.js - robust handler (same as previous)
 const SENDGRID_API_HOST = 'https://api.sendgrid.com/v3/mail/send';
 function parseBodyRaw(raw){ if(!raw) return {}; try{ return JSON.parse(raw);}catch(e){} try{ return Object.fromEntries(new URLSearchParams(raw)); }catch(e){} return {}; }
 module.exports = async (req,res) => {
