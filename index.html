@@ -93,7 +93,38 @@ body{
   .left h1{font-size:40px}
   .right{width:100%}
   .bg-art,.bg-overlay{display:none}
+}/* Fix overlapping and duplicate artwork */
+.bg-art {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.12;
+}
+
+/* Keep all main content ABOVE artwork */
+.header,
+nav,
+.wrapper,
+.left,
+.right,
+footer {
+  position: relative;
+  z-index: 5;
+}
+
+/* Ensure form card sits on very top */
+.right {
+  z-index: 6;
+}
+
 </style>
 </head>
 <body>
